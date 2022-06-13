@@ -3,13 +3,19 @@ const CURRENT_MONTH = NOW.getMonth();
 const CURRENT_YEAR = NOW.getFullYear();
 
 module.exports = {
+  CURRENT_MONTH: CURRENT_MONTH,
+  CURRENT_YEAR: CURRENT_YEAR,
   getNewestReport: function (reports, form) {
     let newestReport;
     let currentReport;
     for (let i = 1; i < reports.length; i++) {
       currentReport = reports[i];
-      if (currentReport.form === form 
-        && (!newestReport || newestReport.reported_date < currentReport.reported_date)) {
+      console.log(`Form is ${currentReport.form}`);
+      if (!newestReport && currentReport.form === form) {
+        newestReport = currentReport;
+        continue;
+      }
+      if (currentReport.form === form && (newestReport.reported_date < currentReport.reported_date)) {
         newestReport = currentReport;
       }
     }
