@@ -175,19 +175,36 @@ module.exports = [
     title: 'task.quality_monitoring_follow_up',
     appliesTo: 'reports',
     appliesIf: function (contact, report) {
-      return report.fields && report.fields.c_needs_follow_up === 'yes' && user.parent && user.parent.type === 'district_hospital';
+      if (report.fields && 
+        report.fields.group_summary && 
+        report.fields.group_summary.follow_up_again) {
+          return report.fields.group_summary.follow_up_again === 'yes' && user.parent && user.parent.type === 'district_hospital';
+      }
+      return false;
     },
     appliesToType: [ 'quality_monitoring' ],
     actions: [ 
       { 
         type: 'report',
-        form: 'quality_monitoring_follow_up' 
+        form: 'quality_monitoring_follow_up',
+        modifyContent: function (content, contact, report) {
+          content.t_follow_up_areas = '';
+          if (report.fields && report.fields.c_follow_up_areas) {
+            content.t_follow_up_areas = report.fields.c_follow_up_areas;
+          }
+        }
       } 
     ],
     events: [
       {
         id: 'quality-monitoring-follow-up-1',
-        days: 21,
+        dueDate: function (event, contact, report) {
+          if (report.fields && report.fields.group_summary && report.fields.group_summary.next_follow_up_date) {
+            return new Date(report.fields.group_summary.next_follow_up_date);
+          } else {
+            return new Date();
+          }
+        },
         start:2,
         end:2,
       }
