@@ -34,5 +34,27 @@ module.exports = [
     appliesTo: 'reports',
     appliesToType: ['quality_monitoring'],
     date: 'reported'
+  },
+  {
+    id: 'households-all-time',
+    type: 'count',
+    goal: 130,
+    translation_key: 'targets.households.title',
+    subtitle_translation_key: 'targets.all_time.subtitle',
+    appliesTo: 'contacts',
+    appliesToType: ['clinic'],
+    date: 'now',
+    aggregate: true
+  },
+  {
+    id: 'population-all-time',
+    type: 'count',
+    goal: 730,
+    translation_key: 'targets.population.title',
+    subtitle_translation_key: 'targets.all_time.subtitle',
+    appliesTo: 'contacts',
+    appliesToType: ['person'],
+    date: 'now',
+    aggregate: true
   }
 ];
