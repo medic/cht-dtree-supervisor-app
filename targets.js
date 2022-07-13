@@ -22,7 +22,7 @@ module.exports = [
     translation_key: 'targets.group_sessions.title',
     subtitle_translation_key: 'targets.this_month.subtitle',
     appliesTo: 'reports',
-    appliesToType: ['group_sessions'],
+    appliesToType: ['group_session'],
     date: 'reported'
   },
   {
@@ -38,23 +38,34 @@ module.exports = [
   {
     id: 'households-all-time',
     type: 'count',
-    goal: 130,
+    goal: 2,
     translation_key: 'targets.households.title',
-    subtitle_translation_key: 'targets.all_time.subtitle',
+    subtitle_translation_key: 'targets.this_month.subtitle',
     appliesTo: 'contacts',
     appliesToType: ['clinic'],
-    date: 'now',
+    date: 'reported',
     aggregate: true
   },
   {
     id: 'population-all-time',
     type: 'count',
-    goal: 730,
+    goal: 2,
     translation_key: 'targets.population.title',
-    subtitle_translation_key: 'targets.all_time.subtitle',
+    subtitle_translation_key: 'targets.this_month.subtitle',
     appliesTo: 'contacts',
     appliesToType: ['person'],
-    date: 'now',
+    date: 'reported',
+    aggregate: true
+  },
+  {
+    id: 'pregnancies-this-month',
+    type: 'count',
+    goal: -1,
+    translation_key: 'targets.pregnancies_enrolled.title',
+    subtitle_translation_key: 'targets.this_month.subtitle',
+    appliesTo: 'reports',
+    appliesToType: ['pregnancy'],
+    date: 'reported',
     aggregate: true
   }
 ];

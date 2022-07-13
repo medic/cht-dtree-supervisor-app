@@ -10,7 +10,6 @@ module.exports = {
     let currentReport;
     for (let i = 1; i < reports.length; i++) {
       currentReport = reports[i];
-      console.log(`Form is ${currentReport.form}`);
       if (!newestReport && currentReport.form === form) {
         newestReport = currentReport;
         continue;
