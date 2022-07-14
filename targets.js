@@ -36,25 +36,47 @@ module.exports = [
     date: 'reported'
   },
   {
+    id: 'household-visits',
+    type: 'count',
+    goal: 16,
+    translation_key: 'targets.household_visits.title',
+    subtitle_translation_key: 'targets.this_month.subtitle',
+    appliesTo: 'reports',
+    appliesToType: ['infant_child', 'pregnancy'],
+    date: 'reported',
+    aggregate: true
+  },
+  {
     id: 'households-all-time',
     type: 'count',
-    goal: 2,
+    goal: 130,
     translation_key: 'targets.households.title',
     subtitle_translation_key: 'targets.this_month.subtitle',
     appliesTo: 'contacts',
     appliesToType: ['clinic'],
-    date: 'reported',
+    date: 'now',
     aggregate: true
   },
   {
     id: 'population-all-time',
     type: 'count',
-    goal: 2,
+    goal: 730,
     translation_key: 'targets.population.title',
     subtitle_translation_key: 'targets.this_month.subtitle',
     appliesTo: 'contacts',
     appliesToType: ['person'],
-    date: 'reported',
+    date: 'now',
+    aggregate: true
+  },
+  {
+    id: 'under-5-population',
+    type: 'count',
+    goal: 2,
+    translation_key: 'targets.under_5_enrolled.title',
+    subtitle_translation_key: 'targets.this_month.subtitle',
+    appliesTo: 'reports',
+    appliesToType: ['infant_child'],
+    date: 'now',
     aggregate: true
   },
   {
@@ -65,6 +87,38 @@ module.exports = [
     subtitle_translation_key: 'targets.this_month.subtitle',
     appliesTo: 'reports',
     appliesToType: ['pregnancy'],
+    date: 'reported',
+    aggregate: true
+  },
+  {
+    id: 'home-maternal-deaths-this-month',
+    type: 'count',
+    goal: -1,
+    translation_key: 'targets.home_maternal_deaths.title',
+    subtitle_translation_key: 'targets.this_month.subtitle',
+    appliesTo: 'reports',
+    appliesToType: ['death_report'],
+    passesIf: function(contact, report) {
+      return report.fields &&
+        report.fields.suspected_maternal_death &&
+        report.fields.suspected_maternal_death.where_death === 'home';
+    },
+    date: 'reported',
+    aggregate: true
+  },
+  {
+    id: 'facility-maternal-deaths-this-month',
+    type: 'count',
+    goal: -1,
+    translation_key: 'targets.facility_maternal_deaths.title',
+    subtitle_translation_key: 'targets.this_month.subtitle',
+    appliesTo: 'reports',
+    appliesToType: ['death_report'],
+    passesIf: function(contact, report) {
+      return report.fields &&
+        report.fields.suspected_maternal_death &&
+        report.fields.suspected_maternal_death.where_death === 'health_facility';
+    },
     date: 'reported',
     aggregate: true
   }
