@@ -8,10 +8,10 @@ module.exports = [
     appliesTo: 'reports',
     appliesToType: ['chw_monthly_meeting'],
     appliesIf: function (contact, report) {
-      if (report.fields && report.fields.planned_meeting && report.fields.planned_meeting.meeting_option) {
-        return report.fields.planned_meeting.meeting_option === 'now';
-      }
-      return false;
+      return report.fields && 
+        report.fields.planned_meeting && 
+        report.fields.planned_meeting.meeting_option && 
+        report.fields.planned_meeting.meeting_option === 'now';
     },
     date: 'reported'
   },
@@ -98,7 +98,7 @@ module.exports = [
     subtitle_translation_key: 'targets.this_month.subtitle',
     appliesTo: 'reports',
     appliesToType: ['death_report'],
-    passesIf: function(contact, report) {
+    appliesIf: function(contact, report) {
       return report.fields &&
         report.fields.suspected_maternal_death &&
         report.fields.suspected_maternal_death.where_death === 'home';
@@ -114,7 +114,7 @@ module.exports = [
     subtitle_translation_key: 'targets.this_month.subtitle',
     appliesTo: 'reports',
     appliesToType: ['death_report'],
-    passesIf: function(contact, report) {
+    appliesIf: function(contact, report) {
       return report.fields &&
         report.fields.suspected_maternal_death &&
         report.fields.suspected_maternal_death.where_death === 'health_facility';
