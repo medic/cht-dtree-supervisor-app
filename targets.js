@@ -43,6 +43,11 @@ module.exports = [
     subtitle_translation_key: 'targets.this_month.subtitle',
     appliesTo: 'reports',
     appliesToType: ['infant_child', 'pregnancy'],
+    appliesIf: function(contact, report) {
+      return report.fields &&
+        (report.fields.consent && report.fields.consent.child_consent_today === 'yes') ||
+        (fields.pregnancy_consent && fields.pregnancy_consent.consent === 'yes');
+    },
     date: 'reported',
     aggregate: true
   },
