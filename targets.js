@@ -46,7 +46,7 @@ module.exports = [
     appliesIf: function(contact, report) {
       return report.fields &&
         (report.fields.consent && report.fields.consent.child_consent_today === 'yes') ||
-        (fields.pregnancy_consent && fields.pregnancy_consent.consent === 'yes');
+        (report.fields.pregnancy_consent && report.fields.pregnancy_consent.consent === 'yes');
     },
     date: 'reported',
     aggregate: true

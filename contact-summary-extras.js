@@ -8,7 +8,7 @@ module.exports = {
   getNewestReport: function (reports, form) {
     let newestReport;
     let currentReport;
-    for (let i = 1; i < reports.length; i++) {
+    for (let i = 0; i < reports.length; i++) {
       currentReport = reports[i];
       if (!newestReport && currentReport.form === form) {
         newestReport = currentReport;
