@@ -1,0 +1,19 @@
+{
+  "title": [
+    {
+      "locale": "en",
+      "content": "Quality Monitoring Planning"
+    },
+    {
+      "locale": "sw",
+      "content": "Quality Monitoring Planning"
+    }
+  ],
+  "icon": "",
+  "context": {
+      "person": true,
+      "place": false,
+      "expression": "contact.type === 'person' && contact.parent.parent && !contact.parent.parent.parent && user.parent.type === 'district_hospital'"
+    },
+  "hidden_fields": []
+}
